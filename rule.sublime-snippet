@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[rule ${1:identifier} : ${2:tag}
+{
+	meta:
+		author: ${3:$TM_FULLNAME}
+		description: ${4:rule_description}
+		date: ${5:current_date}
+
+	strings:
+		${6}
+
+	condition:
+		${7}$0
+}]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>rule</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.yar</scope>
+	<description>Snippet for creating yara rule</description>
+</snippet>
