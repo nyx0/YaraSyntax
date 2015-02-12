@@ -1,0 +1,9 @@
+{
+	"name": "Yara rule",
+	"description": "Yara package for Sublime Text",
+	"version": "1.0",
+	"author": "nyx",
+	"url": "https://github.com/nyx0/yara",
+	"dependencies": [],
+	"platforms": ["*"]
+}
