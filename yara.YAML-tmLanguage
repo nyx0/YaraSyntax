@@ -37,10 +37,10 @@ patterns:
   match: (\$|#|@)[a-zA-Z0-9_*]*
 
 - name: string.quoted.double.yara
-  begin: \"
+  begin: '"'
   beginCaptures:
     '0': {name: punctuation.definition.string.begin.yara}
-  end: \"
+  end: '"'
   endCaptures:
     '0': {name: punctuation.definition.string.end.yara}
 
