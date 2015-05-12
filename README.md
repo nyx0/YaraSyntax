@@ -17,7 +17,7 @@ With [Package Control](https://packagecontrol.io):
 Manually:
 
 1. Go to your packages folder. (In ST menu, Browse Packages open the packages folder)
-2. Clone or [download](archive/1.0.5.zip) git repo into the folder
+2. Clone or [download](https://github.com/nyx0/SublimeYara/archive/1.0.6.zip) git repo into the folder
 3. Restart Sublime Text if required.
 
 ## Tests
