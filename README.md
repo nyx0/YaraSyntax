@@ -10,14 +10,14 @@ It allows syntax highlighting and contains snippets.
 With [Package Control](https://packagecontrol.io):
 
 1. Run Package Control: "Install Package" command
-2. Find `SublimeYara` plugin.
+2. Find `YaraSyntax` plugin.
 3. Install it.
 4. Restart Sublime Text if required.
 
 Manually:
 
 1. Go to your packages folder. (In ST menu, Browse Packages open the packages folder)
-2. Clone or [download](https://github.com/nyx0/SublimeYara/archive/1.0.6.zip) git repo into the folder
+2. Clone or [download](https://github.com/nyx0/YaraSyntax/archive/1.0.7.zip) git repo into the folder
 3. Restart Sublime Text if required.
 
 ## Tests
