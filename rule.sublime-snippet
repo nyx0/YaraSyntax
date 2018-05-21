@@ -1,20 +1,21 @@
-<snippet>
-	<content><![CDATA[rule ${1:identifier} : ${2:tag}
+<?xml version="1.0" encoding="UTF-8"?><snippet>
+    <content><![CDATA[rule ${1:rule1} : ${2:tag1}
 {
-	meta:
-		author: ${3:$TM_FULLNAME}
-		description: ${4:rule_description}
-		date: ${5:current_date}
+    meta:
+        author: "${3:$TM_FULLNAME}"
+        description: "${4:rule description}"
+        date: "${5:yyyy-mm-dd}"
+    strings:
+        \$str = "${6:string1}"
+        \$bytes = {${7:13 37}}
+    condition:
+        \$str or \$bytes$0
+}
 
-	strings:
-		${6}
-
-	condition:
-		${7}$0
-}]]></content>
-	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>rule</tabTrigger>
-	<!-- Optional: Set a scope to limit where the snippet will trigger -->
-	<scope>source.yar</scope>
-	<description>Snippet for creating yara rule</description>
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>rule</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.yar</scope>
+    <description>Snippet for creating yara rule</description>
 </snippet>
