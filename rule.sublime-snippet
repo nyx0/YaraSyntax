@@ -2,9 +2,9 @@
     <content><![CDATA[rule ${1:rule1} : ${2:tag1}
 {
     meta:
-        author: "${3:$TM_FULLNAME}"
-        description: "${4:rule description}"
-        date: "${5:yyyy-mm-dd}"
+        author = "${3:$TM_FULLNAME}"
+        description = "${4:rule description}"
+        date = "${5:yyyy-mm-dd}"
     strings:
         \$str = "${6:string1}"
         \$bytes = {${7:13 37}}
