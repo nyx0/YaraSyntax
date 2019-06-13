@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><snippet>
+<snippet>
     <content><![CDATA[rule ${1:rule1} : ${2:tag1}
 {
     meta:
