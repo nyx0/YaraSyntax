@@ -4,73 +4,58 @@
 file_extensions:
   - yar
 scope: source.yar
+first_line_match: ^(\bglobal\b|\bprivate\b)?\s\brule\b\s[a-zA-z0-9]*(\s\:[\sa-zA-z0-9]*)?(\n{|\s*{)
 
 contexts:
-  # The prototype context is prepended to all contexts but those setting
-  # meta_include_prototype: false.
-  prototype:
-    - include: comments
-
   main:
-    # The main context is the initial starting point of our syntax.
-    # Include other contexts from here (or specify them directly).
-    - include: keywords
-    - include: numbers
-    - include: strings
-
-  keywords:
-    # Keywords are if, else for and while.
-    # Note that blackslashes don't need to be escaped within single quoted
-    # strings in YAML. When using single quoted strings, only single quotes
-    # need to be escaped: this is done by using two single quotes next to each
-    # other.
-    - match: '\b(all|and|any|ascii|at|condition|contains|entrypoint|false|filesize|fullword|for|global|in|import|include|int8|int16|int32|int8be|int16be|int32be|matches|meta|nocase|not|or|of|private|rule|strings|them|true|uint8|uint16|uint32|uint8be|uint16be|uint32be|wide)\b'
-      scope: keyword.control.yara
-
-  numbers:
-    - match: '\b((0(x|X)[0-9a-fA-F]*(\.[0-9a-fA-F]+p-?\d+)?)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)([fF]|(l{1,2}|L{1,2})[uU]?|[uU](l{0,2}|L{0,2}))?\b'
-      scope: constant.numeric.yara
-
-  strings:
-    # Strings begin and end with quotes, and use backslashes as an escape
-    # character.
     - match: '"'
       scope: punctuation.definition.string.begin.yara
-      push: inside_string
+      push: double_quoted_string
 
-  inside_string:
-    - meta_include_prototype: false
+    - match: '//'
+      scope: punctuation.definition.comment.yara
+      push: line_comment
+
+    - match: '\/\*'
+      scope: punctuation.definition.block.comment.begin.yara
+      push: block_comment
+
+    - match: '\b(all|and|any|ascii|at|condition|contains|entrypoint|false|filesize|fullword|for|global|in|import|include|int8|int16|int32|int8be|int16be|int32be|matches|meta|nocase|not|or|of|private|rule|strings|them|true|uint8|uint16|uint32|uint8be|uint16be|uint32be|wide|xor)\b'
+      scope: keyword.operator.word.yara
+
+    - match: '=\s*{'
+      scope: definition.constant.numeric.yara
+      push: constant
+
+    - match: '\s*/'
+      scope: punctuation.definition.regex.begin.yara
+      push: regex
+
+  double_quoted_string:
     - meta_scope: string.quoted.double.yara
-    - match: '\\[tnr"]'
+    - match: '\\.'
       scope: constant.character.escape.yara
-    - match: '"'
+    - match: '"($|\s*)'
       scope: punctuation.definition.string.end.yara
       pop: true
 
-  comments:
-    - match: ^/\* =(\s*.*?)\s*= \*/$\n?
-      scope: comment.block.yara
-      captures:
-        1: meta.toc-list.banner.block.yara
-    - match: /\*
-      scope: punctuation.definition.comment.yara
-      push:
-        - meta_scope: comment.block.yara
-        - match: \*/
-          scope: punctuation.definition.comment.yara
-          pop: true
-    - match: \*/(?!\*)
-      scope: invalid.illegal.stray-comment-end.yara
-    - match: ^// =(\s*.*?)\s*=\s*$\n?
-      scope: comment.line.banner.yara
-      captures:
-        1: meta.toc-list.banner.line.yara
-    - match: //
-      scope: punctuation.definition.comment.yara
-      push:
-        - meta_scope: comment.line.double-slash.yara
-        - match: '(\\)$\n'
-          captures:
-            1: punctuation.separator.continuation.yara
-        - match: \n
-          pop: true
+  line_comment:
+    - meta_scope: comment.line.yara
+    - match: $
+      pop: true
+
+  block_comment:
+    - meta_scope: punctuation.definition.block.comment.end.yara
+    - match: '\*\/'
+      pop: true
+
+  constant:
+    - meta_content_scope: constant.numeric.yara
+    - match: '[a-fA-F0-9]*'
+    - match: '}'
+      pop: true
+
+  regex:
+    - meta_content_scope: punctuation.definition.regex.end.yara
+    - match: '/'
+      pop: true
