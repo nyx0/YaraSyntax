@@ -1,0 +1,7 @@
+*.pyc
+*.cache
+*.sublime-project
+*.swp
+
+# OS X temp files
+*.DS_Store
