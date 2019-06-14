@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+    condition:
+        ${0:all} of them
+]]></content>
+    <tabTrigger>cond</tabTrigger>
+    <scope>source.yara</scope>
+    <description>condition</description>
+</snippet>

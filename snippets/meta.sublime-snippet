@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+meta:
+    ${1:meta} = "${0:text}"
+]]></content>
+    <tabTrigger>meta</tabTrigger>
+    <scope>source.yara</scope>
+    <description>meta</description>
+</snippet>

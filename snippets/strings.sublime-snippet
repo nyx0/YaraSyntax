@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+    strings:
+        \$${1:str} = "${0:text}"
+]]></content>
+    <tabTrigger>str</tabTrigger>
+    <scope>source.yara</scope>
+    <description>strings</description>
+</snippet>

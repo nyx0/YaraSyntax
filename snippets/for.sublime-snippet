@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[
+for ${1:x} in ${2:(1..3)}: (${3:condition})
+
+]]></content>
+    <tabTrigger>for</tabTrigger>
+    <scope>source.yara</scope>
+    <description>For Loop</description>
+</snippet>
