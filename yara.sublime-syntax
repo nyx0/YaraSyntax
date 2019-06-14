@@ -20,14 +20,17 @@ contexts:
       scope: punctuation.definition.block.comment.begin.yara
       push: block_comment
 
-    - match: '\b(all|and|any|ascii|at|condition|contains|entrypoint|false|filesize|fullword|for|global|in|import|include|int8|int16|int32|int8be|int16be|int32be|matches|meta|nocase|not|or|of|private|rule|strings|them|true|uint8|uint16|uint32|uint8be|uint16be|uint32be|wide|xor)\b'
+    - match: '\bimport|include\b'
+      scope: keyword.control.import.yara
+
+    - match: '\b(all|and|any|ascii|at|condition|contains|entrypoint|false|filesize|fullword|for|global|in|int8|int16|int32|int8be|int16be|int32be|matches|meta|nocase|not|or|of|private|rule|strings|them|true|uint8|uint16|uint32|uint8be|uint16be|uint32be|wide|xor)\b'
       scope: keyword.operator.word.yara
 
     - match: '=\s*{'
       scope: definition.constant.numeric.yara
       push: constant
 
-    - match: '\s*/'
+    - match: '=\s*/'
       scope: punctuation.definition.regex.begin.yara
       push: regex
 
