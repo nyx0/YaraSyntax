@@ -3,7 +3,7 @@
 # See http://www.sublimetext.com/docs/3/syntax.html
 file_extensions:
   - yar
-scope: source.yar
+scope: source.yara
 first_line_match: ^(\bglobal\b|\bprivate\b)?\s\brule\b\s[a-zA-z0-9]*(\s\:[\sa-zA-z0-9]*)?(\n{|\s*{)
 
 contexts:
@@ -16,18 +16,30 @@ contexts:
       scope: punctuation.definition.comment.yara
       push: line_comment
 
-    - match: '\/\*'
+    - match: '/\*'
       scope: punctuation.definition.block.comment.begin.yara
       push: block_comment
 
-    - match: '\bimport|include\b'
+    - match: '\b(import|include)\b'
       scope: keyword.control.import.yara
 
-    - match: '\b(all|and|any|ascii|at|condition|contains|entrypoint|false|filesize|fullword|for|global|in|int8|int16|int32|int8be|int16be|int32be|matches|meta|nocase|not|or|of|private|rule|strings|them|true|uint8|uint16|uint32|uint8be|uint16be|uint32be|wide|xor)\b'
-      scope: keyword.operator.word.yara
+    - match: '\b(int8|int16|int32|int8be|int16be|int32be|uint16|uint32|uint8be|uint16be|uint32be)\b'
+      scope: keyword.declaration.type.yara
+
+    - match: '\b(rule|meta|strings|condition)\b'
+      scope: support.function.builtin.yara
+
+    - match: '\b(global|private|ascii|nocase|wide|xor|fullword)\b'
+      scope: support.type.yara
+
+    - match: '\b(all|any|at|contains|entrypoint|false|filesize|for|in|matches|of|them|true)\b'
+      scope: entity.name.yara
+
+    - match: '\b(and|or|not)\b'
+      scope: keyword.control.conditional.yara
 
     - match: '=\s*{'
-      scope: definition.constant.numeric.yara
+      scope: definition.constant.numeric.begin.yara
       push: constant
 
     - match: '=\s*/'
@@ -35,7 +47,7 @@ contexts:
       push: regex
 
   double_quoted_string:
-    - meta_scope: string.quoted.double.yara
+    - meta_content_scope: string.quoted.double.yara
     - match: '\\.'
       scope: constant.character.escape.yara
     - match: '"($|\s*)'
@@ -48,17 +60,21 @@ contexts:
       pop: true
 
   block_comment:
-    - meta_scope: punctuation.definition.block.comment.end.yara
-    - match: '\*\/'
+    - meta_scope: comment.block.yara
+    - match: '\*/'
+      scope: punctuation.definition.block.comment.end.yara
       pop: true
 
   constant:
     - meta_content_scope: constant.numeric.yara
-    - match: '[a-fA-F0-9]*'
+    - match: '(\(|\)|\|)'
+      scope: constant.numeric.escape.yara
     - match: '}'
+      scope: definition.constant.numeric.end.yara
       pop: true
 
   regex:
-    - meta_content_scope: punctuation.definition.regex.end.yara
+    - meta_content_scope: variable.parameter.yara
     - match: '/'
+      scope: punctuation.definition.regex.end.yara
       pop: true
