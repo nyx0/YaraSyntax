@@ -5,34 +5,48 @@ include "other.yar"
 // <- keyword.control.import
 
 private rule ExampleRule
-// <- keyword.operator.word
-//      ^^^^ keyword.operator.word
+//^^^^^ support.type.yara
+//      ^^^^ support.function.builtin.yara
 {
     meta:
-//  ^^^^ keyword.operator.word
+//  ^^^^ support.function.builtin.yara
         description = "test rule"
-//                    ^ string.quoted.double
-//                              ^ punctuation.definition.string.end
+//                    ^ punctuation.definition.string.begin.yara
+//                     ^^^^^^^^^ string.quoted.double.yara
+//                              ^ punctuation.definition.string.end.yara
     strings:
-//  ^^^^^^^ keyword.operator.word
-        $re = /md5: [0-9a-fA-F]{32}/
-//            ^ punctuation.definition.regex.begin
-//                                 ^ punctuation.definition.regex.end
-        $my_text_string = "text \"here"
-        $my_hex_string = { E2 34 A1 C8 23 FB }
-                      // ^ definition.constant.numeric
-                        // ^^^^^^^^^^^^^^^^^^ constant.numeric
+//  ^^^^^^^ support.function.builtin.yara
+        $re = /md5: [0-9a-fA-F]{32}/ /* test */
+//            ^ punctuation.definition.regex.begin.yara
+//                                 ^ punctuation.definition.regex.end.yara
+//                                   ^^ comment.block.yara punctuation.definition.block.comment.begin.yara
+//                                      ^^^^^^^ comment.block.yara
+//                                           ^^ comment.block.yara punctuation.definition.block.comment.end.yara
+        $text_string = "foobar"
+//                     ^ punctuation.definition.string.begin.yara
+//                      ^^^^^^ string.quoted.double.yara
+//                            ^ punctuation.definition.string.end.yara
+//                              
+        $hex_string = { E2 34 ?? C8 A? FB }
+//                    ^ definition.constant.numeric.begin.yara
+//                      ^^^^^^^^^^^^^^^^^^ constant.numeric.yara
+//                                        ^ definition.constant.numeric.end.yara
         /*
-//      ^ punctuation.definition.block.comment.begin
+//      ^^ comment.block.yara punctuation.definition.block.comment.begin.yara
             comment block here
         */
-//      ^ punctuation.definition.block.comment.end
+//      ^^ comment.block.yara punctuation.definition.block.comment.end.yara
         $xor_string = "This program cannot" xor wide
-                                         // ^^^ keyword.operator.word
-                                             // ^^^^ keyword.operator.word
+//                                          ^^^ support.type.yara
+//                                              ^^^^ support.type.yara
         $wide_and_ascii_string = "Borland" wide ascii
+//                                         ^^^^ support.type.yara
+//                                              ^^^^^ support.type.yara
         $text_string = "foobar" nocase
-        $hex_string = {F4 23 ( 62 B4 | 56 | 45 ?? 67 ) 45}
+//                              ^^^^^^ support.type.yara
     condition:
+//  ^^^^^^^^^ support.function.builtin.yara
         any of them
-}
+//      ^^^ entity.name.yara
+//          ^^ entity.name.yara
+//             ^^^^ entity.name.yara
