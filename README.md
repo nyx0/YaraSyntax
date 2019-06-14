@@ -23,6 +23,13 @@ folder)
 git repo into the folder
 3. Restart Sublime Text if required.
 
+## Snippets
+
+* rule
+* meta
+* strings
+* condition
+
 ## Contributors
 
 You could contribute by openning a issue or create a pull request.
