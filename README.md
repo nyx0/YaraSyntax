@@ -2,8 +2,9 @@
 
 ## Synopsis
 
-This is a [Yara](http://plusvic.github.io/yara) plugin for [Sublime Text](http://www.sublimetext.com).
-It allows syntax highlighting and contains snippets.
+This is a [Yara](http://plusvic.github.io/yara) plugin for
+[Sublime Text](http://www.sublimetext.com).
+This package contains syntax highlighting and contains snippets.
 
 ## Installation
 
@@ -16,13 +17,11 @@ With [Package Control](https://packagecontrol.io):
 
 Manually:
 
-1. Go to your packages folder. (In ST menu, Browse Packages open the packages folder)
-2. Clone or [download](https://github.com/nyx0/YaraSyntax/archive/1.0.7.zip) git repo into the folder
+1. Go to your packages folder. (In ST menu, Browse Packages open the packages
+folder)
+2. Clone or [download](https://github.com/nyx0/YaraSyntax/archive/master.zip)
+git repo into the folder
 3. Restart Sublime Text if required.
-
-## Tests
-
-In ST create new file.yar, tape `rule` and press enter. A template rule should appears with syntax highlighting
 
 ## Contributors
 
