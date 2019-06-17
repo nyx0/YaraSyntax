@@ -1,8 +1,7 @@
 %YAML 1.2
 ---
 # See http://www.sublimetext.com/docs/3/syntax.html
-file_extensions:
-  - yar
+file_extensions: [yar, yara]
 scope: source.yara
 first_line_match: ^(\bglobal\b|\bprivate\b)?\s\brule\b\s[a-zA-z0-9]*(\s\:[\sa-zA-z0-9]*)?(\n{|\s*{)
 
