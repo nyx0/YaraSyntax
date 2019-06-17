@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+include "${1}.yar"
+]]></content>
+    <tabTrigger>inc</tabTrigger>
+    <scope>source.yara</scope>
+    <description>include</description>
+</snippet>

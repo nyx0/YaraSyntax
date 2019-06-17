@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[
+import "${1}"
+]]></content>
+    <tabTrigger>imp</tabTrigger>
+    <scope>source.yara</scope>
+    <description>import</description>
+</snippet>
