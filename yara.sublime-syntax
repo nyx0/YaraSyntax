@@ -28,7 +28,7 @@ contexts:
     - match: '\b(rule|meta|strings|condition)\b'
       scope: support.function.builtin.yara
 
-    - match: '\b(global|private|ascii|nocase|wide|xor|fullword)\b'
+    - match: '\b(global|private|ascii|base64|base64wide|nocase|wide|xor|fullword)\b'
       scope: support.type.yara
 
     - match: '\b(all|any|at|contains|entrypoint|false|filesize|for|in|matches|of|them|true)\b'
