@@ -1,19 +1,21 @@
 <snippet>
-    <content><![CDATA[rule ${1:rule1} : ${2:tag1}
+    <content><![CDATA[rule ${1:Some_Rule} : ${2:Some_Tag}
 {
     meta:
         author = "${3:$TM_FULLNAME}"
         description = "${4:rule description}"
-        date = "${5:yyyy-mm-dd}"
+        created = "${5:dd-mm-yyyy}"
+        last_modified = "${6:dd-mm-yyyy}"
+        
+
     strings:
-        \$str = "${6:string1}"
-        \$bytes = {${7:13 37}}
+        \$str = "${7:random string}"
     condition:
-        \$str or \$bytes$0
+        all of them
 }
 
 ]]></content>
     <tabTrigger>rul</tabTrigger>
     <scope>source.yara</scope>
-    <description>New rule</description>
+    <description>Generates a template for a new YARA rule</description>
 </snippet>
