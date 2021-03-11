@@ -1,15 +1,16 @@
 <snippet>
     <content><![CDATA[rule ${1:Some_Rule} : ${2:Some_Tag}
 {
+
     meta:
         author = "${3:$TM_FULLNAME}"
         description = "${4:rule description}"
         created = "${5:dd-mm-yyyy}"
         last_modified = "${6:dd-mm-yyyy}"
-        
-
+       
     strings:
         \$str = "${7:random string}"
+
     condition:
         all of them
 }
