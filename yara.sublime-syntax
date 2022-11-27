@@ -22,7 +22,7 @@ contexts:
     - match: '\b(import|include)\b'
       scope: keyword.control.import.yara
 
-    - match: '\b(int8|int16|int32|int8be|int16be|int32be|uint16|uint32|uint8be|uint16be|uint32be)\b'
+    - match: '\b(int8|int16|int32|int8be|int16be|int32be|uint8|uint16|uint32|uint8be|uint16be|uint32be)\b'
       scope: keyword.declaration.type.yara
 
     - match: '\b(rule|meta|strings|condition)\b'
@@ -31,7 +31,7 @@ contexts:
     - match: '\b(global|private|ascii|base64|base64wide|nocase|wide|xor|fullword)\b'
       scope: support.type.yara
 
-    - match: '\b(all|any|at|contains|entrypoint|false|filesize|for|in|matches|of|them|true)\b'
+    - match: '\b(all|any|at|contains|defined|endswith|entrypoint|false|filesize|for|icontains|iendswith|iequals|in|istartswith|matches|of|startswith|them|true)\b'
       scope: entity.name.yara
 
     - match: '\b(and|or|not)\b'
