@@ -1,9 +1,10 @@
 %YAML 1.2
 ---
-# See http://www.sublimetext.com/docs/3/syntax.html
+# See https://www.sublimetext.com/docs/syntax.html
+name: YARA
 file_extensions: [yar, yara]
 scope: source.yara
-first_line_match: ^(\bglobal\b|\bprivate\b)?\s\brule\b\s[a-zA-z0-9]*(\s\:[\sa-zA-z0-9]*)?(\n{|\s*{)
+first_line_match: ^(?:(?<!global\s)\bglobal\b\s|(?<!private\s)\bprivate\b\s){0,2}\brule\b\s(?![0-9])[_a-zA-Z0-9]{1,128}(?:\s:(?:\s(?![0-9])[_a-zA-Z0-9]{1,128}){1,128})?
 
 contexts:
   main:
